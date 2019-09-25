@@ -1,22 +1,22 @@
 {
   "expo": {
-    "name": "kawaiToDo",
-    "description": "kawai To Do App made with React Native",
-    "slug": "kawaiToDo",
+    "name": "WHToDo",
+    "description": "made WH To Do App made with React Native",
+    "slug": "WHToDo",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android",
-      "web"
+      // "web"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashlyon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#f23657"
+      "backgroundColor": "#FFDA31"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -26,6 +26,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.pygmalionsoft.kawai"
     }
   }
 }

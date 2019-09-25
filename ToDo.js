@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  Alert, Button,
   TouchableOpacity,
   StyleSheet,
   Dimensions,
@@ -27,7 +28,13 @@ export default class ToDo extends Component {
   };
   render() {
     const { isEditing, toDoValue } = this.state;
-    const { text, id, deleteToDo, isCompleted } = this.props;
+    const {
+      text,
+      id,
+      deleteToDo,
+      isCompleted,
+      onPressSimpleAlert
+    } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.column}>
@@ -48,7 +55,7 @@ export default class ToDo extends Component {
               ]}
               value={toDoValue}
               multiline={true}
-              onChangeText={this._controllInput}
+              onChangeText={this._controlInput}
               returnKeyType={"done"}
               onBlur={this._finishEditing}
               underlineColorAndroid={"transparent"}
@@ -80,12 +87,7 @@ export default class ToDo extends Component {
                 <Text style={styles.actionText}>✏️</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPressOut={event => {
-                event.stopPropagation;
-                deleteToDo(id);
-              }}
-            >
+            <TouchableOpacity onPressOut={this.onPressAlert}>
               <View style={styles.actionContainer}>
                 <Text style={styles.actionText}>❌</Text>
               </View>
@@ -115,9 +117,21 @@ export default class ToDo extends Component {
     updateToDo(id, toDoValue);
     this.setState({ isEditing: false });
   };
-  _controllInput = text => {
+  _controlInput = text => {
     this.setState({ toDoValue: text });
   };
+  _onPressAlert = () => {
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed')},
+        {text: 'OK', onPress: () => {event.stopPropagation,
+        deleteToDo(id)}}
+      ],
+      { cancelable: false }
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -140,7 +154,7 @@ const styles = StyleSheet.create({
     borderColor: "#bbb"
   },
   uncompletedCircle: {
-    borderColor: "#F23657"
+    borderColor: "#FFDA31"
   },
   text: {
     fontWeight: "600",

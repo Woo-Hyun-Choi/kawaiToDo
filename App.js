@@ -33,18 +33,22 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Text style={styles.title}>ToDo앱을 만들어보자...휴..</Text>
+        <Text style={styles.title}>WHToDo</Text>
         <View style={styles.card}>
           <TextInput
             style={styles.input}
             placeholder={"새로운 말을 끄적여봐라.."}
             value={newToDo}
-            onChangeText={this._crontollNewToDo}
+            onChangeText={this._controlNewToDo}
             placeholderTextColor={"#999"}
             returnKeyType={"done"}
             autoCorrect={false}
             onSubmitEditing={this._addToDo}
             underlineColorAndroid={"transparent"}
+            ref={input => {
+              this.TextInput = input;
+            }}
+            blurOnSubmit={false}
           />
           <ScrollView contentContainerStyle={styles.toDos}>
             {Object.values(toDos)
@@ -64,7 +68,7 @@ export default class App extends React.Component {
       </View>
     );
   }
-  _crontollNewToDo = text => {
+  _controlNewToDo = text => {
     this.setState({
       newToDo: text
     });
@@ -166,7 +170,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F23657",
+    backgroundColor: "#FFDA31",
     alignItems: "center"
   },
   title: {
@@ -174,7 +178,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginTop: 50,
     fontWeight: "200",
-    marginBottom: 30
+    marginBottom: 100
   },
   card: {
     backgroundColor: "white",
