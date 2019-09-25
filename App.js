@@ -57,7 +57,7 @@ export default class App extends React.Component {
                 <ToDo
                   key={toDo.id}
                   deleteToDo={this._deleteToDo}
-                  uncompleteToDo={this._uncompleteToDo}
+                  unCompleteToDo={this._unCompleteToDo}
                   completeToDo={this._completeToDo}
                   updateToDo={this._updateToDo}
                   {...toDo}
@@ -120,7 +120,7 @@ export default class App extends React.Component {
       return { ...newState };
     });
   };
-  _uncompleteToDo = id => {
+  _unCompleteToDo = id => {
     this.setState(prevState => {
       const newState = {
         ...prevState,

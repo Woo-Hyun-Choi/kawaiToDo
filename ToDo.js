@@ -25,7 +25,7 @@ export default class ToDo extends Component {
     isCompleted: PropTypes.bool.isRequired,
     deleteToDo: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
-    uncompleteToDo: PropTypes.func.isRequired,
+    unCompleteToDo: PropTypes.func.isRequired,
     completeToDo: PropTypes.func.isRequired,
     updateToDo: PropTypes.func.isRequired
   };
@@ -103,9 +103,9 @@ export default class ToDo extends Component {
   }
   _toggleComplete = event => {
     event.stopPropagation();
-    const { isCompleted, uncompleteToDo, completeToDo, id } = this.props;
+    const { isCompleted, unCompleteToDo, completeToDo, id } = this.props;
     if (isCompleted) {
-      uncompleteToDo(id);
+      unCompleteToDo(id);
     } else {
       completeToDo(id);
     }

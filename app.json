@@ -6,8 +6,8 @@
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
-      "ios",
-      "android",
+      // "ios",
+      "android"
       // "web"
     ],
     "version": "1.0.0",
@@ -24,11 +24,11 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
+    // "ios": {
+    //   "supportsTablet": true
+    // },
     "android": {
-      "package": "com.pygmalionsoft.kawai"
+      "package": "com.pygmalionsoft.WH"
     }
   }
 }
