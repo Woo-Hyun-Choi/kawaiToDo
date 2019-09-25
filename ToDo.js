@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Alert, Button,
+  Alert,
+  Button,
   TouchableOpacity,
   StyleSheet,
   Dimensions,
   TextInput
 } from "react-native";
 import PropTypes from "prop-types";
+import {ToastAndroid} from 'react-native';
+
 
 const { width, height } = Dimensions.get("window");
 
@@ -87,7 +90,7 @@ export default class ToDo extends Component {
                 <Text style={styles.actionText}>✏️</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity onPressOut={this.onPressAlert}>
+            <TouchableOpacity onPressOut={this._onPressAlert}>
               <View style={styles.actionContainer}>
                 <Text style={styles.actionText}>❌</Text>
               </View>
@@ -96,6 +99,7 @@ export default class ToDo extends Component {
         )}
       </View>
     );
+    
   }
   _toggleComplete = event => {
     event.stopPropagation();
@@ -120,14 +124,16 @@ export default class ToDo extends Component {
   _controlInput = text => {
     this.setState({ toDoValue: text });
   };
-  _onPressAlert = () => {
+  _onPressAlert = event => {
+    event.stopPropagation();
+    const { deleteToDo, id } = this.props;
+
     Alert.alert(
-      'Alert Title',
-      'My Alert Msg',
+      "알림",
+      "삭제하시겠습니까?",
       [
-        {text: 'Cancel', onPress: () => console.log('Cancel Pressed')},
-        {text: 'OK', onPress: () => {event.stopPropagation,
-        deleteToDo(id)}}
+        { text: "Cancel", onPress: () => this.setState({ isEditing: false })},
+        { text: "OK",     onPress: () => deleteToDo(id) },
       ],
       { cancelable: false }
     );
